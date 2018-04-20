@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace testproj.Data
 {
-    public interface IAuthRepository
+    public interface IAuthRepos
     {
         Task<User> Register(string user, string password);
         Task<User> Login(string userName, string password);

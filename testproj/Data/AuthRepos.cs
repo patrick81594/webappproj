@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace testproj.Data
 {
-    public class AuthRepository : IAuthRepository
+    public class AuthRepos : IAuthRepos
     {
         private readonly DataContext _context;
 
-        public AuthRepository(DataContext context)
+        public AuthRepos(DataContext context)
         {
             _context = context;
         }

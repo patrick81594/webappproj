@@ -24,10 +24,17 @@ namespace testproj.Data
 
         private bool PasswordHashVerified(string password, byte[] passwordHash, byte[] passwordSalt)
         {
-            // Hash password and compare with PasswordHash stored in database
+            // Hash password and compare with PasswordHash stored in database      
+            var hash = new HMACSHA512
+            {
+                Key = passwordSalt
+            };
 
-            // Temporary return value for testing
-            return true;
+
+            var computedHash = hash.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+
+            
+            return computedHash.SequenceEqual(passwordHash);
         }
 
         public async Task<User> Register(string userName, string password)
@@ -43,6 +50,20 @@ namespace testproj.Data
             await _context.Users.AddAsync(newUser);
             await _context.SaveChangesAsync();
             return newUser;
+        }
+
+        public bool ValidateUserName(string userName)
+        {
+            var matches = _context.Users.Where(b => b.UserName == userName).SingleOrDefault();
+            if (matches == null)
+            {
+                return false;
+
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

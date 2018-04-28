@@ -9,5 +9,10 @@ namespace testproj.DTOs
     {
         public string UserName { get; set; }
         public string Password { get; set; }
+
+        public static explicit operator string(LoginDTO v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

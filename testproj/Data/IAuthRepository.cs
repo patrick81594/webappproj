@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace testproj.Data
 {
-    public interface IAuthRepos
+    public interface IAuthRepository
     {
+        
+
         Task<User> Register(string user, string password);
         Task<User> Login(string userName, string password);
+
         bool ValidateUserName(string userName);
     }
 }

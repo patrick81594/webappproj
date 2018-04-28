@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace testproj.Data
 {
-    public class AuthRepos : IAuthRepos
+    public class AuthRepository : IAuthRepository
     {
-        private readonly DataContext _context;
+        private readonly DataContexT _context;
 
-        public AuthRepos(DataContext context)
+        public AuthRepository(DataContexT context)
         {
             _context = context;
         }
@@ -46,7 +46,6 @@ namespace testproj.Data
             var newUser = new User { UserName = userName };
             newUser.PasswordHash = computedHash;
             newUser.PasswordSalt = hash.Key;
-
             await _context.Users.AddAsync(newUser);
             await _context.SaveChangesAsync();
             return newUser;

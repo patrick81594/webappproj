@@ -1,14 +1,19 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿
 using System.Collections.Generic;
+using System;
+using System.Threading.Tasks;
+using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
-namespace testproj.API.Controllers
+namespace testproj.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
         // GET api/values
         [HttpGet]
+        [Authorize]
         public IActionResult GetValues()
         {
             var values = new string[] { "abc", "def", "ghi", "jkl" };
@@ -16,7 +21,9 @@ namespace testproj.API.Controllers
         }
 
         // GET api/values/5
+        
         [HttpGet("{id}")]
+        
         public IActionResult GetValue(int id)
         {
             // throw new Exception("Test exception");

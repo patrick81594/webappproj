@@ -1,15 +1,16 @@
-﻿using testproj.Models;
+﻿
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using testproj.Models;
 
 namespace testproj.Data
 {
-    public class DataContext : DbContext
+    public class DataContexT : Microsoft.EntityFrameworkCore.DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        public DataContexT(DbContextOptions<DataContexT> options) : base(options)
         { }
 
         public DbSet<User> Users { get; set; }
